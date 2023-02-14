@@ -1,0 +1,93 @@
+.heading {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  /* margin-bottom: 1.5rem; */
+  padding: 2rem 0 1rem 0;
+}
+
+.form,
+.content {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-family: inherit;
+}
+
+.form-group label {
+  text-align: left;
+  display: block;
+  margin: 0 0 5px 3px;
+}
+
+.form-group p {
+  text-align: center;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: 2px solid var(--primary-black);
+  border-radius: 5px;
+  background: var(--primary-black);
+  color: var(--primary-white);
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  appearance: button;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn svg {
+  margin-right: 8px;
+}
+
+.btn-reverse {
+  background: var(--primary-white);
+  color: var(--primary-black);
+}
+
+.btn-block {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.btn-empty {
+  margin: 0 auto;
+  color: var(--primary-black);
+  background-color: var(--primary-white);
+}
+
+.switch-text {
+  color: #414141;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.btn:hover {
+  border: 2px solid var(--primary-black);
+  background-color: var(--primary-white);
+  transform: scale(0.99);
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}

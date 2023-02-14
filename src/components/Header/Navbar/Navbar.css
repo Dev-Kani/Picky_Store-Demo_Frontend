@@ -1,0 +1,139 @@
+.navbar {
+  background-color: var(--primary-black);
+  color: var(--primary-white);
+}
+
+.navbar a {
+  color: var(--primary-white);
+}
+
+.navbar__content {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px 0;
+}
+
+.navbar__logo h1 {
+  padding: 0 0 0 1rem;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--primary-white);
+  margin: 0;
+}
+
+.navbar__login {
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: auto;
+}
+
+.navbar__cart {
+  display: flex;
+  align-items: center;
+  margin: 0 14px 0 0;
+}
+
+.navbar__cart:hover {
+  color: var(--primary-white);
+}
+
+.navbar__cart-sign_up {
+  padding: 5px;
+  transition: background-color .2s ease-in;
+  border-radius: 10px
+}
+
+.navbar__cart-sign_up:hover {
+  color: var(--primary-black);
+  background-color: var(--primary-white);
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.admin__links {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.navbar__login-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart__badge {
+  margin-right: 5.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: var(--primary-black);
+  background-color: var(--primary-yellow);
+  width: 30px;
+  height: 30px;
+  /* font-size: 16px; */
+}
+
+/* dropdown */
+.navbar_login>div>button {
+  background-color: var(--primary-black);
+  color: var(--primary-white);
+  font-weight: 500;
+  border: none;
+  margin: 0 7px 0 0;
+}
+
+.navbar_login>div>button>i {
+  margin: 0 0 0 6px;
+}
+
+.dropdown-nav button {
+  background: none;
+  border: none;
+  color: var(--primary-white);
+}
+
+.dropdown-nav button i {
+  margin: 0 0 0 5px;
+}
+
+.dropdown-list {
+  margin: 1.18rem 0 0 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+}
+
+.dropdown-list>div {
+  width: 6.5rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.dropdown-list>div>a {
+  padding: 5px 10px;
+  background-color: var(--primary-black);
+  color: var(--primary-white);
+  border: 1.5px solid var(--primary-black);
+}
+
+.dropdown-list>div>a:hover {
+  background-color: var(--primary-white);
+  color: var(--primary-black);
+  border: 1.5px solid var(--primary-black);
+}
+
+@media screen and (max-width: 768px) {
+  .navbar__content {
+    flex-direction: column;
+    row-gap: 1rem;
+    margin: 8px 0 8px 0;
+  }
+}

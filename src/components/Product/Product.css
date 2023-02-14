@@ -1,0 +1,31 @@
+.rating span {
+  margin: 0.1rem;
+}
+
+.card__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card__bottom-btn {
+  border: none;
+  background: none;
+}
+
+.card__bottom-icon {
+  margin: 0;
+  padding: 0;
+  font-size: 21px;
+  transition: font-size 0.1s ease-in-out;
+}
+
+.card__bottom-icon:hover {
+  font-size: 22.5px;
+}
+
+.card__bottom-price {
+  font-weight: 600;
+  font-size: 22px;
+  margin: 0;
+}

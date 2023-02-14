@@ -1,0 +1,17 @@
+.btn__dark {
+  color: var(--primary-white);
+  background-color: var(--primary-black);
+}
+
+.btn__dark:hover {
+  font-weight: 500;
+  color: var(--primary-black);
+  background-color: var(--primary-white);
+  border: 1.5px solid var(--primary-black);
+}
+
+.btn__yellow:hover {
+  background-color: var(--primary-yellow);
+  border: 1.5px solid var(--primary-black);
+  color: var(--primary-black);
+}
