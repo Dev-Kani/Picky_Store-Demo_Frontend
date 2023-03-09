@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import axios from "axios"
 
-const API_URL = `http://localhost:5000/api/`
+const API_URL = `${import.meta.env.VITE_BACKEND_URL}/api/`
 
 const initialState = {
   createdOrder: {},
@@ -27,7 +27,6 @@ export const createOrder = createAsyncThunk(
 
       return response.data
     } catch (error) {
-      console.log(error);
       const message =
         (error.response && error.response.data && error.response.data.message) ||
         error.message ||

@@ -59,13 +59,14 @@ const ProductList = () => {
     createdProduct._id, pageNumber, dispatch, navigate])
 
   const deleteHandler = (productId) => {
-    if (window.confirm('Are you sure')) {
-      dispatch(deleteProduct(productId))
+    if (window.confirm(`This will dispatch the deleteProduct function to send a http DELETE request to delete this product. This is disabled for now. Let's not delete any product. ok?`)) {
+      // dispatch(deleteProduct(productId))
     }
   }
 
   const createProductHandler = () => {
-    dispatch(doCreateProduct())
+    if (window.confirm(`After clicking ok, a sample product will be created and you will be redirected to EditProduct component which means you can update product details. But updating product details is disabled for now.`))
+      dispatch(doCreateProduct())
   }
 
   if (productDeleteSuccess) {

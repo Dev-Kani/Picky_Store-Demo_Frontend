@@ -18,6 +18,8 @@ const UserProfile = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
+  const [matchPassword, setMatchPassword] = useState(false)
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -73,9 +75,15 @@ const UserProfile = () => {
   const onSubmit = (e) => {
     e.preventDefault()
     if (password !== confirmPassword) {
-      toast.error('Passwords do not match')
+      setMatchPassword(true)
+      setTimeout(() => {
+        setMatchPassword(false)
+      }, 5000)
     } else {
-      dispatch(updateUserDetails({ id: user._id, name, email, password }))
+      // temporary alert
+      if (window.confirm(`As an Admin, you can modify, delete or update users' (customers) details and your own. When this UserProfile component loads, Redux dispatch getUserDetails function to get user's details and then populate the form inputs with fetched details. After clicking Update button, Redux will dispatch the updateUserDetails function to sent http PUT request to update user details. Let's not do that for now, ok?`)) {
+        // dispatch(updateUserDetails({ id: user._id, name, email, password }))
+      }
     }
   }
 
@@ -96,9 +104,9 @@ const UserProfile = () => {
           <section className='heading'>
             <i className="fas fa-user"></i> <h2>User Profile</h2>
           </section>
-
           <Col sm={12} className='form'>
             <FormContainer>
+              {matchPassword && <Alert variant='danger'>Passwords do not match</Alert>}
               {isError && <Alert variant='danger'>{message}</Alert>}
               {isSuccess && <Alert variant='success'>User Details Updated</Alert>}
               <form onSubmit={onSubmit}>

@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 // import { toast } from 'react-toastify'
-import { register, reset } from '../../redux/features/auth/authSlice'
+import { register, regReset } from '../../redux/features/auth/authSlice'
 import Spinner from '../../components/Spinner'
-// import Alert from '../../components/Alert'
+import Alert from '../../components/Alert'
 import FormContainer from '../../components/FormContainer'
 import { Button } from 'react-bootstrap'
 import './Auth.css'
@@ -12,6 +12,8 @@ import './Auth.css'
 function Register() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
+  const [matchPassword, setMatchPassword] = useState(false)
 
   const [formData, setFormData] = useState({
     name: '',
@@ -21,21 +23,10 @@ function Register() {
   })
 
   const { name, email, password, confirmPassword } = formData
-  const { user, isLoading, isError, isSuccess, message } = useSelector(
+  const { user, isLoading, regLoading, regError, regSuccess, regMessage } = useSelector(
     state => state.auth
   )
 
-  useEffect(() => {
-    if (isError) {
-      return <Alert variant='danger'>{message}</Alert>
-    }
-
-    if (isSuccess || user) {
-      return <Alert variant='danger'>{message}</Alert>
-    }
-
-    dispatch(reset())
-  }, [user, isError, isSuccess, message, navigate, dispatch])
 
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -47,16 +38,17 @@ function Register() {
   const onSubmit = (e) => {
     e.preventDefault()
     if (password !== confirmPassword) {
-      toast.error('Passwords do not match')
+      setMatchPassword(true)
+      setTimeout(() => {
+        setMatchPassword(false)
+      }, 5000)
     } else {
       const userData = {
         name,
         email,
         password,
       }
-
       dispatch(register(userData))
-      // console.log(userData)
     }
   }
 
@@ -64,10 +56,31 @@ function Register() {
     return <Spinner />
   }
 
+
+
+  useEffect(() => {
+    if (user) {
+      navigate('/')
+    }
+
+    if (regSuccess) {
+      setTimeout(() => {
+        dispatch(regReset())
+      }, 4000)
+      setTimeout(() => { navigate('/login') }, 5000)
+    }
+  }, [regSuccess, user, navigate, dispatch])
+
+
   return (
     <FormContainer>
       <section className='heading'>
         <i className="fas fa-user"></i> <span>Register</span>
+      </section>
+      <section>
+        {matchPassword && <Alert variant='danger'>Passwords do not match</Alert>}
+        {regSuccess && <Alert variant='success'>{regMessage}</Alert>}
+        {regError && <Alert variant='danger'>{regMessage}</Alert>}
       </section>
 
       <section className='form'>

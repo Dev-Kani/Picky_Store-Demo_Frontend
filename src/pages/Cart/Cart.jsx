@@ -24,7 +24,7 @@ const Cart = () => {
       {cartItems.length === 0 && <div className='mt-5 text-center d-flex flex-column align-items-center'>
         <h2>Shopping Cart</h2>
         <p className='my-3'>Your cart is empty </p>
-        <Link to='/' className='btn btn__dark mt-2' style={{ width: '200px' }}>Go Back</Link>
+        <Link to='/' className='btn btn__dark mt-2' style={{ width: '200px' }}>Go Shopping</Link>
       </div>}
       {cartItems.length > 0 &&
         <Row className='py-4 d-flex flex-column align-items-center flex-md-row'>

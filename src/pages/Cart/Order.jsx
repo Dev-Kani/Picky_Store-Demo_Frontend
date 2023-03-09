@@ -87,14 +87,14 @@ const Order = () => {
         // setThanks(true)
         // navigate('/profile')
         refreshPage()
-      }, 2000)
+      }, 5000)
 
       setThanks(true)
     } else if (deliverSuccess) {
       setTimeout(() => {
         // navigate('/admin/orders-list')
         // refreshPage()
-      }, 4000)
+      }, 5000)
     }
 
   }, [orderId, orderPaySuccess, isSuccess, isPaid, deliverSuccess, userLogin, dispatch])

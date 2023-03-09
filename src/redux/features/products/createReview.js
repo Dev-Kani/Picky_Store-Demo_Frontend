@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import axios from "axios"
 
-const API_URL = `http://localhost:5000/api/products/`
+const API_URL = `${import.meta.env.VITE_BACKEND_URL}/api/products/`
 
 const initialState = {
   isLoading: true,
@@ -26,7 +26,6 @@ export const doCreateReview = createAsyncThunk(
       await axios.post(`${API_URL}${productId}/reviews`, { rating, comment }, config)
 
     } catch (error) {
-      console.log(error)
       const message =
         (error.response && error.response.data && error.response.data.message) ||
         error.message ||

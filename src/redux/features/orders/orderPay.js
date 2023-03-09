@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import axios from "axios"
 
-const API_URL = `http://localhost:5000/api/`
+const API_URL = `${import.meta.env.VITE_BACKEND_URL}/api/`
 
 const initialState = {
   orderPay: {},
@@ -17,7 +17,6 @@ export const payOrder = createAsyncThunk(
   async (args, { thunkAPI, getState }) => {
     const { orderId, paymentResult } = args
     try {
-      // console.log(orderId, paymentResult)
       const state = getState()
       const { token } = state.auth.user
       const config = {
@@ -30,7 +29,6 @@ export const payOrder = createAsyncThunk(
 
       return response.data
     } catch (error) {
-      console.log(error);
       const message =
         (error.response && error.response.data && error.response.data.message) ||
         error.message ||
@@ -53,13 +51,11 @@ const orderPay = createSlice({
         state.isLoading = true
       })
       .addCase(payOrder.fulfilled, (state, action) => {
-        // console.log(action.payload);
         state.isLoading = false
         state.isSuccess = true
         state.orderPay = action.payload
       })
       .addCase(payOrder.rejected, (state, action) => {
-        // console.log(action.payload)
         state.isLoading = false
         state.isSuccess = false
         state.isError = true

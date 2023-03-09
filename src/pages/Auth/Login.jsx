@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import Spinner from '../../components/Spinner'
 import Alert from '../../components/Alert'
 import FormContainer from '../../components/FormContainer'
-import { login } from '../../redux/features/auth/authSlice'
+import { login, reset } from '../../redux/features/auth/authSlice'
 import { Button } from 'react-bootstrap'
 import './Auth.css'
 
@@ -13,9 +13,11 @@ function Login() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
+  const [tempError, setTempError] = useState(true)
+
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
+    email: 'admin@picky.com',
+    password: 'admin@picky.com',
   })
 
   const { email, password } = formData
@@ -23,18 +25,6 @@ function Login() {
   const { user, isLoading, isError, isSuccess, message } = useSelector(
     state => state.auth
   )
-
-  useEffect(() => {
-    if (isError) {
-      return <Alert variant='success'>{message}</Alert>
-    }
-
-    if (isSuccess || user) {
-      navigate('/')
-    }
-
-    // dispatch(reset())
-  }, [user, isError, isSuccess, message, navigate, dispatch])
 
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -52,16 +42,35 @@ function Login() {
     dispatch(login(userData))
   }
 
-  if (isLoading) {
-    return <Spinner />
-  }
+  useEffect(() => {
+    if (isLoading) {
+      return <Spinner />
+    }
+    if (user) {
+      navigate('/cart')
+    }
+    if (isError) {
+      setTimeout(() => {
+        setTempError(false)
+        dispatch(reset())
+      }, 4000)
+      setTimeout(() => {
+        setTempError(true)
+      }, 5000)
+    }
+
+  }, [user, navigate, isError, dispatch, reset])
+
 
   return (
     <FormContainer>
       <section className='heading'>
         <i className="fas fa-sign-in-alt"></i><span> Login </span>
       </section>
-
+      <section>
+        {isSuccess && <Alert variant='success'>{message}</Alert>}
+        {tempError && isError && <Alert variant='danger'>{message}</Alert>}
+      </section>
       <section className='form'>
         <form onSubmit={onSubmit}>
           <div className='form-group'>

@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import axios from "axios"
 
-const API_URL = `http://localhost:5000/api/orders/my-orders`
+const API_URL = `${import.meta.env.VITE_BACKEND_URL}/api/orders/my-orders`
 
 const initialState = {
   myOrders: [],
@@ -25,7 +25,6 @@ export const getMyOrder = createAsyncThunk(
       const response = await axios.get(API_URL, config)
       return response.data
     } catch (error) {
-      console.log(error)
       const message =
         (error.response && error.response.data && error.response.data.message) ||
         error.message ||
@@ -53,7 +52,6 @@ const myOrders = createSlice({
         state.myOrders = action.payload
       })
       .addCase(getMyOrder.rejected, (state, action) => {
-        console.log(action.payload);
         state.isLoading = false
         state.isSuccess = false
         state.isError = true

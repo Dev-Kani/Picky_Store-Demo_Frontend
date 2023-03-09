@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios';
 
-const API_URL = `http://localhost:5000/api/users/`
+const API_URL = `${import.meta.env.VITE_BACKEND_URL}/api/users/`
 
 // Get user from localStorage
 // const user = JSON.parse(localStorage.getItem('user'))
@@ -59,7 +59,6 @@ export const userDetailsSlice = createSlice({
         state.user = action.payload
       })
       .addCase(getUserDetails.rejected, (state, action) => {
-        // console.log(action.payload)
         state.isLoading = false
         state.isError = true
         state.user = null

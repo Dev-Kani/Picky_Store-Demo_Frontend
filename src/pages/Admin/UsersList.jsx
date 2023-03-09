@@ -4,7 +4,7 @@ import { Table, Button, Container } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Alert from '../../components/Alert'
 import Spinner from '../../components/Spinner'
-import { deleteUser, getUsersList } from '../../redux/features/auth/admin/usersList'
+import { deleteUser, getUsersList } from '../../redux/features/auth/admin/users/usersList'
 
 const UsersList = () => {
   const dispatch = useDispatch()
@@ -24,8 +24,8 @@ const UsersList = () => {
   }, [dispatch, userLogin?.isAdmin, navigate, deleteSuccess])
 
   const deleteHandler = (userId) => {
-    if (window.confirm("Are you sure?")) {
-      dispatch(deleteUser(userId))
+    if (window.confirm(`After this confirmation, Redux will dispatch the deleteUser function, which means, a http DELETE request will be sent to backend. But I don't want you to do this right now. `)) {
+      // dispatch(deleteUser(userId))
     }
   }
 

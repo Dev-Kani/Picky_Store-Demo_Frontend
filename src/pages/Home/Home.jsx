@@ -34,7 +34,7 @@ const Home = () => {
       <Container>
         {!keyword ? (<Carousel />) :
           (
-            <Link to='/' className='btn'>
+            <Link to='/' className='btn btn__dark mt-3'>
               Go Back
             </Link>
           )}

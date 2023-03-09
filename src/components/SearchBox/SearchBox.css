@@ -28,8 +28,9 @@
 
 .search_box-btn:focus {}
 
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 768px) {
   .search_box-input {
+    width: 30rem;
     /* margin: px 0; */
   }
 }

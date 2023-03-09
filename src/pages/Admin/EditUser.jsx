@@ -6,7 +6,7 @@ import Spinner from '../../components/Spinner'
 import FormContainer from '../../components/FormContainer'
 import { Link } from 'react-router-dom'
 import { getUserDetails } from '../../redux/features/auth/userProfile'
-import { doEditUser } from '../../redux/features/auth/admin/editUser'
+import { doEditUser } from '../../redux/features/auth/admin/users/editUser'
 
 function EditUser() {
   const dispatch = useDispatch()
@@ -72,16 +72,18 @@ function EditUser() {
 
   const onSubmit = (e) => {
     e.preventDefault()
-    dispatch(doEditUser({
-      _id: userId, name, email, isAdmin
-
-    }))
+    // temporary alert
+    if (window.confirm(`As an Admin, you can modify, delete or update users' (customers) details. When this EditUser component loads, Redux dispatch getUserDetails function to get user's details and then populate the form inputs with those details. After clicking Update button, Redux will dispatch the doEditUser function to sent http PUT request to backend for update user details. Let's not do that right now. ok?`))
+      dispatch(doEditUser({
+        // _id: userId, name, email, isAdmin
+      })
+      )
   }
 
   return (
     <>
-      <Link to='/admin/users-list' className='btn btn-light my-3'>Go Back</Link>
       <FormContainer>
+        <Link to='/admin/users-list' className='btn btn-light my-3'>Go Back</Link>
         <section className='heading'>
           <i className="fas fa-user"></i> <span> Edit User</span>
         </section>
@@ -112,7 +114,7 @@ function EditUser() {
                   onChange={onChange}
                 />
               </div>
-              <div className=''>
+              <div className='my-3'>
                 <input
                   type='checkbox'
                   className=''
@@ -121,11 +123,11 @@ function EditUser() {
                   checked={isAdmin}
                   // placeholder='Enter password'
                   onChange={onChange}
-                />
-                <label htmlFor="IsAdmin"> Is Admin?</label><br></br>
+                /> {`  `}
+                <label htmlFor="IsAdmin"> Is Admin?</label><br />
               </div>
               <div className='form-group'>
-                <button type='submit' className='btn btn-block'>
+                <button type='submit' className='btn btn__dark btn-block'>
                   Update
                 </button>
               </div>

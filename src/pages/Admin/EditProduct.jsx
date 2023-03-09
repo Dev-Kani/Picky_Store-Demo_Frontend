@@ -45,7 +45,6 @@ const EditProduct = () => {
       navigate('/admin/products-list')
     } else {
       if (!product.name || product._id !== productId) {
-        console.log('this ran')
         dispatch(getProductDetails(productId))
       } else {
         setFormData({
@@ -74,7 +73,9 @@ const EditProduct = () => {
       description
     }))
     // dispatch(editedProductReset())
-    navigate('/admin/products-list')
+    if (window.confirm(`When this EditProduct component loads, Redux dispatch getProductDetails function to get product details and then populate the form inputs with product details. After clicking Update button, Redux will dispatch the doEditProduct function to sent http PUT request to update product details. But this functionality is disabled for now.`)) {
+      navigate('/admin/products-list')
+    }
   }
 
   const onChange = (e) => {
@@ -115,10 +116,10 @@ const EditProduct = () => {
   return (
     <>
       <FormContainer>
-        <Link to='/admin/products-list' className='btn btn-light my-3'>
+        <Link to='/admin/products-list' className='btn btn__dark my-3'>
           Go Back
         </Link>
-        <h1 className='text-center'>Edit Product</h1>
+        <h2 className='text-center'>Edit Product</h2>
         {editProductLoading && <Spinner />}
         {/* {editProductSuccess && <Alert variant='success'>Product updated successfully</Alert>} */}
         {editProductError && <Alert variant='danger'>{editProductMessage}</Alert>}

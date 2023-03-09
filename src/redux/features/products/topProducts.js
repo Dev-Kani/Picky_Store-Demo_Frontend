@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
 import axios from "axios"
 
-const TOP_PRODUCTS_URL = 'http://localhost:5000/api/products/top'
+const TOP_PRODUCTS_URL = `${import.meta.env.VITE_BACKEND_URL}/api/products/top`
 
 const initialState = {
   topProducts: [],
@@ -43,7 +43,8 @@ const topProducts = createSlice({
       .addCase(fetchTopProducts.rejected, (state, action) => {
         state.isLoading = false
         state.isError = true
-        state.message = action.payload
+        // state.message = action.payload
+        state.message = `An error occurred`
       })
   }
 })

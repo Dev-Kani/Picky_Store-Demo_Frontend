@@ -3,7 +3,7 @@ import axios from "axios"
 
 // const PRODUCTS_URL = `${process.env.REACT_APP_BACKEND_URL}api/products`
 
-const PRODUCTS_URL = `http://localhost:5000/api/products`
+const PRODUCTS_URL = `${import.meta.env.VITE_BACKEND_URL}/api/products`
 
 const initialState = {
   products: [],
