@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { logout, reset } from '../../../redux/features/auth/authSlice'
 import { userDetailsReset } from '../../../redux/features/auth/userProfile'
 import { cartItemsReset } from '../../../redux/features/cart/cartSlice'
-import { resetMyOrders } from '../../../redux/features/Orders/myOrders'
+import { resetMyOrders } from '../../../redux/features/orders/myOrders'
 import SearchBox from '../../SearchBox/SearchBox'
 import './Navbar.css'
 

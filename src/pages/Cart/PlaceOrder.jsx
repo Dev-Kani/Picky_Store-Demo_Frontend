@@ -7,9 +7,9 @@ import Spinner from '../../components/Spinner'
 import CheckoutSteps from '../../components/CheckoutSteps'
 import paypalImg from '../../assets/img/paypal.svg'
 import cardsImg from '../../assets/img/cards.png'
-import { createOrder } from '../../redux/features/Orders/createOrder'
+import { createOrder } from '../../redux/features/orders/createOrder'
 import { cartItemsReset } from '../../redux/features/cart/cartSlice'
-import { orderDetailsReset } from '../../redux/features/Orders/order'
+import { orderDetailsReset } from '../../redux/features/orders/order'
 import './Cart.css'
 
 const PlaceOrder = () => {

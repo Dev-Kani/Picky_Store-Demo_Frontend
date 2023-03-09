@@ -1,6 +1,6 @@
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js"
 import { useDispatch } from "react-redux"
-import { payOrder } from "../../redux/features/Orders/orderPay"
+import { payOrder } from "../../redux/features/orders/orderPay"
 
 const PaypalCheckout = ({ totalPrice, orderId }) => {
   const dispatch = useDispatch()

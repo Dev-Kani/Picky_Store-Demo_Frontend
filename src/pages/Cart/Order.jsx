@@ -5,10 +5,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import moment from 'moment'
 import Alert from '../../components/Alert'
 import Spinner from '../../components/Spinner'
-import { getOrderDetails } from '../../redux/features/Orders/order'
+import { getOrderDetails } from '../../redux/features/orders/order'
 import { cartItemsReset } from '../../redux/features/cart/cartSlice'
 import { makeOrderDelivered } from '../../redux/features/auth/admin/orders/orderDeliver'
-import { orderPayReset } from '../../redux/features/Orders/orderPay'
+import { orderPayReset } from '../../redux/features/orders/orderPay'
 import PaypalCheckout from '../../components/Checkout/PaypalCheckout'
 
 const Order = () => {
